@@ -1,0 +1,26 @@
+# A lire :
+# Remplacez <DATABASE> par votre nom pour le TP.
+# 
+# Port host (assurez-vous que ces ports ne soient pas déjà ouvert avant déploiement des docker) :
+# MySQL : 8001
+# Tomcat : 8002
+db:
+  image: mysql:5.7.29
+  environment:
+    MYSQL_ROOT_PASSWORD: Justine2000
+    MYSQL_DATABASE: <DATABASE>
+    MYSQL_USER: <DATABASE>
+    MYSQL_PASSWORD: justine123
+  ports:
+  - "8001:3306"
+  volumes:
+   - ./db:/docker-entrypoint-initdb.d
+
+web:
+  image: tomcat:latest
+  ports:
+   - "8002:8080"
+  volumes:
+   - ./tomcat/webapps:/usr/local/tomcat/webapps
+  links:
+    - db

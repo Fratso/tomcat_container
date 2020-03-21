@@ -1,0 +1,40 @@
+<%@ page import="java.sql.*" %> 
+<%@ page import="java.io.*" %> 
+<html> 
+<head> 
+<title>3 Connection with mysql database 3</title>
+</head> 
+<body>
+<h1>Connection status</h1>
+<% 
+try {
+    String connectionURL = "jdbc:mysql://db:3306/AUTISSIER";
+    Connection connection = null; 
+    Class.forName("com.mysql.jdbc.Driver").newInstance(); 
+    connection = DriverManager.getConnection(connectionURL, "AUTISSIER", "justine123");
+    if(!connection.isClosed())
+        out.println("Successfully connected to " + "MySQL server using TCP/IP...");
+      String query = "SELECT * FROM user";
+
+      // create the java statement
+      Statement st = connection.createStatement();
+      
+      // execute the query, and get a java resultset
+      ResultSet rs = st.executeQuery(query);
+      
+      // iterate through the java resultset
+      while (rs.next())
+      {
+        //int id = rs.getInt("user");
+        String user = rs.getString("user");
+        //String password = rs.getString("password");
+        Date dateCreated = rs.getDate("date_created");
+        out.println( "<br>" + "<a href=\"userUnsafe.jsp?user="+user+"\">" + user + "</a> " + dateCreated);
+      }
+      st.close();
+    
+    connection.close();
+}catch(Exception ex){
+    out.println("Unable to connect to database.");
+}
+%>
