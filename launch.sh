@@ -16,6 +16,7 @@ sed s/\<DATABASE\>/$DATABASE/g adapt_this/mysql-init.sql.bak > ../db/mysql-init.
 sed s/\<DATABASE\>/$DATABASE/g adapt_this/list.jsp.bak > src/list.jsp
 sed s/\<DATABASE\>/$DATABASE/g adapt_this/userSafe.jsp.bak > src/userSafe.jsp
 sed s/\<DATABASE\>/$DATABASE/g adapt_this/userUnsafe.jsp.bak > src/userUnsafe.jsp
+sed s/\<DATABASE\>/$DATABASE/g adapt_this/createUser.jsp.bak > src/createUser.jsp
 cd src
 jar -cvf $warfile.war *
 mv $warfile.war ../../$tomcat
