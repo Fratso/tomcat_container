@@ -10,6 +10,7 @@
 		<li><a href="userSafe.jsp">userSafe</a></li>
 		<li><a href="userUnsafe.jsp">userUnsafe</a></li>
 		<li><a href="createUser.jsp">Create a new user</a></li>
+		<li><a href="list_patch.jsp">List users safely</a></li>
 	</ul>
 </body>
 </html>

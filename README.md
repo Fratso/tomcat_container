@@ -2,11 +2,17 @@
 
 A docker compose example project with a MySQL and a Tomcat container linked together.
 
+## Requirement
+- Docker
+- Docker-compose
+
+## Run
 Feel free to open and adapt the launch.sh script to meet your needs.
 To run: 
 	$ ./launch.sh
 
 
+## Description
 Host ports:
 8002: tomcat
 8001: mysql
@@ -18,4 +24,10 @@ Containers:
 
 ATTENTION: This project come with known vulnerabilities. I decline all responsability in any use of this project. See it as a learning project.
 
+This Docker-compose is here for learning purpose only and may contains vulnerabilities.
+
+### Tips
+Some build/src files may be overwrite on startup. Make sure to modify the build/adapt\_this files in consequences.
+
+## Source
 Inspired by https://github.com/dmulligan/docker-example-tomcat-mysql to make the docker-compose.

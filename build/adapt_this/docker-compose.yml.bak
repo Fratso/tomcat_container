@@ -17,11 +17,11 @@ db:
    - ./db:/docker-entrypoint-initdb.d
 
 web:
-        #image: tomcat:latest
   build: ./tomcat/
   ports:
    - "8002:8080"
-     #volumes:
-          #- ./tomcat/webapps:/usr/local/tomcat/webapps
+  # To continue the dev while container is running.
+  volumes:
+  - ./tomcat/webapps:/usr/local/tomcat/webapps
   links:
     - db
