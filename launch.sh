@@ -5,8 +5,8 @@ DATABASE=AUTISSIER
 tomcat=tomcat/webapps/
 warfile=autissier
 
-echo "[*] Killing previous containers...";
-sudo docker-compose kill
+echo "[*] Shuting down and removing previous containers...";
+sudo docker-compose down
 echo "[*] Erasing previous tomcat sources files...";
 # Generating warfile using the specific database name.
 rm -rf $tomcat$warfile
@@ -31,9 +31,7 @@ mv $warfile.war ../../
 cd ../..
 
 echo "[*] Copy conf files from src to tomcat conf...";
-cp -r build/src/tomcat/conf tomcat/conf
-echo "[*] Erasing previous containers...";
-sudo docker-compose rm
+cp -r build/src/tomcat/conf tomcat/
 echo "[*] Starting new containers...";
 sudo docker-compose up --build --remove-orphans -d
 
