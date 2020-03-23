@@ -17,7 +17,7 @@ String connectionURL = "jdbc:mysql://db:3306/<DATABASE>";
       out.println("Successfully connected to " + "MySQL server using TCP/IP...");
       // create the java statement
        
-      String sql = "SELECT * FROM user where user=?";
+      String sql = "SELECT id, AES_DECRYPT(user, 'toto') AS user, password, date_created, is_admin FROM user where user=AES_ENCRYPT(?, 'toto')";
       PreparedStatement statement = connection.prepareStatement(sql); 
       statement.setString(1, request.getParameter("user"));
  

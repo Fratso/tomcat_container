@@ -44,7 +44,7 @@
                         out.println("Successfully connected to " + "MySQL server using TCP/IP...");
                     
                         // preparing the statement 
-                        String query = "INSERT INTO user (user, password, date_created, is_admin) VALUES (?, SHA2(?, 256), CURRENT_DATE(), 0);";
+                        String query = "INSERT INTO user (user, password, date_created, is_admin) VALUES (AES_ENCRYPT(?, 'toto'), SHA2(?, 256), CURRENT_DATE(), 0);";
 
                     pstatement = connection.prepareStatement(query);
                     pstatement.setString(1, username);

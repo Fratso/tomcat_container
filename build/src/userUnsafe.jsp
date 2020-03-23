@@ -16,7 +16,7 @@ try {
     if(!connection.isClosed())
         out.println("Successfully connected to " + "MySQL server using TCP/IP...");
         Statement statement = connection.createStatement();
-        String sql = "SELECT * FROM user where user='"+ request.getParameter("user")+"'";
+        String sql = "SELECT id, AES_DECRYPT(user, 'toto') AS user, password, date_created, is_admin FROM user where user=AES_ENCRYPT('"+ request.getParameter("user")+"', 'toto')";
         out.println(sql);
         //out.println(statement.toString());
                 ResultSet rs = statement.executeQuery(sql);

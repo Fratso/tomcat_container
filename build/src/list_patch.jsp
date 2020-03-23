@@ -26,7 +26,7 @@
                                 out.println("Database unreachable");
                             } else {
                                 // out.println("Successfully connected to " + "MySQL server using TCP/IP...");  
-                                String query = "SELECT * FROM user";
+                                String query = "SELECT id, AES_DECRYPT(user, 'toto') AS user, password, date_created, is_admin FROM user";
 
                                 // create the java statement
                                 Statement st = connection.createStatement();
